@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pezcadilla Animación | In Motion Learning</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config & Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pezDark: '#050505',
+                        pezYellow: '#FFC500',
+                        pezYellowDark: '#b38a00',
+                        pezRed: '#FF4338',
+                        pezCardPink: '#ffa6a6',
+                        pezCardOlive: '#7a6600',
+                        pezTableGray: '#1a1a1a'
+                    },
+                    fontFamily: {
+                        'hand': ['Caveat', 'cursive'],
+                        'sans': ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Animations & Styles -->
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body class="font-sans antialiased text-gray-200">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-pezDark/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#inicio" class="text-pezYellow font-hand text-3xl animate-wiggle inline-block"> 
+                        <img src="./src/fish.png" alt="Pezcadilla Logo" style="width: 80px; height: 60px">
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#inicio" class="nav-link text-white hover:text-pezYellow transition-colors font-medium">Inicio</a>
+                        <a href="#nosotros" class="nav-link text-white hover:text-pezYellow transition-colors font-medium">Nosotros</a>
+                        <a href="#servicios" class="nav-link text-white hover:text-pezYellow transition-colors font-medium">Servicios</a>
+                        <a href="#inmotion" class="nav-link text-white hover:text-pezYellow transition-colors font-medium">In Motion</a>
+                        <a href="#contacto" class="nav-link text-white hover:text-pezYellow transition-colors font-medium">Contacto</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-pezYellow hover:text-white focus:outline-none">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION: Inicio -->
+    <section id="inicio" class="min-h-screen pt-24 pb-12 flex flex-col justify-center items-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between w-full gap-4">
+            
+            <!-- Left: Text/Logo (55% do espaço) -->
+            <div class="w-full md:w-[55%] flex flex-col items-center md:items-start z-10">
+                <img src="./src/logo.gif" alt="Pezcadilla Logo Animado" class="w-full h-auto object-contain transition-all duration-500 hover:sepia hover:hue-rotate-90 hover:brightness-110">
+            </div>
+            
+            <!-- Center: Interactive Social/Contact Icons (Centralizados) -->
+            <div class="flex flex-row md:flex-col items-center justify-center gap-6 z-20 my-8 md:my-0 mx-auto">
+                <!-- Ícone de Email -->
+                <a href="mailto:contacto@pezcadilla.com" title="Correo Electrónico" class="w-14 h-14 bg-pezDark/80 border-2 border-pezYellow rounded-full flex items-center justify-center text-pezYellow hover:bg-pezYellow hover:text-black transition-all duration-300 shadow-lg hover:scale-110">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </a>
+
+                <!-- Ícone de Instagram -->
+                <a href="https://instagram.com/Pezcadilla" target="_blank" rel="noopener noreferrer" title="Instagram" class="w-14 h-14 bg-pezDark/80 border-2 border-pezYellow rounded-full flex items-center justify-center text-pezYellow hover:bg-pezYellow hover:text-black transition-all duration-300 shadow-lg hover:scale-110">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Right: Artwork (35% do espaço) -->
+            <div class="w-full md:w-[35%] relative z-10">
+                <div class="inline-block relative w-full h-full">
+                    <img src="./src/fishes.gif" alt="Fishes Arte" class="w-full h-auto object-contain rounded transition-all duration-500 hover:sepia hover:hue-rotate-90 hover:brightness-110">
+                    <div class="absolute inset-0 border-4 border-pezYellow/30 border-dashed m-2 rounded pointer-events-none"></div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SECTION: Nosotros -->
+    <section id="nosotros" class="py-20 relative border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="font-sans font-bold text-5xl md:text-6xl text-white mb-6 uppercase tracking-wider relative inline-block">
+                Nosotros
+                <!-- Adorno Decoration Placeholder -->
+                <div class="absolute -top-6 -right-12 text-pezYellow font-hand text-4xl animate-pulse">✨🐟✨</div>
+            </h2>
+            <h3 class="font-sans text-xl md:text-2xl text-gray-300 mb-8">Animación tradicional potenciada por la tecnología del mañana</h3>
+            
+            <div class="space-y-6 text-gray-400 font-light text-lg mb-16 leading-relaxed max-w-4xl">
+                <p>El mundo y la industria creativa evolucionan a un ritmo acelerado. En Pezcadilla entendemos que la magia de lo tradicional no se contrapone con la innovación.</p>
+                <p>Nosotros nos adaptamos y combinamos la animación análoga con herramientas actuales y tecnología. Esto nos permite optimizar nuestros procesos creativos y conectar historias con el entorno digital sin perder nuestra identidad orgánica.</p>
+                <p>Desarrollamos proyectos de autor y soluciones creativas integrales. Nuestra propuesta abarca desde la producción de animación tradicional y comercial, hasta plataformas web a medida, SaaS y soluciones tecnológicas. Con una estructura liderada por nuestro núcleo directivo y respaldada por talento especializado, transformamos conceptos en universos visuales sólidos, listos para conectar con audiencias globales.</p>
+            </div>
+
+            <!-- Team -->
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <!-- Mariana -->
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-32 h-32 flex-shrink-0 sketchy-border overflow-hidden bg-gray-800">
+                        <img src="./src/mori2.jpg" alt="Mariana Muelas Morris" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <div>
+                        <h4 class="font-hand text-3xl text-white mb-1 uppercase tracking-wide">Mariana Muelas Morris</h4>
+                        <p class="text-pezYellow font-medium mb-3 uppercase text-sm tracking-widest">CEO & Directora Creativa</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">Animadora digital con amplio recorrido, especializada en stop-motion, 2D y dirección de proyectos de autor. Cuenta con experiencia internacional en producción, gestión de proyectos animados y docencia creativa. Como fundadora y CEO de Pezcadilla Animación, lidera la visión artística del estudio, la dirección de arte y el desarrollo de contenidos como In Motion.</p>
+                    </div>
+                </div>
+                <!-- Iñigo -->
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <div class="w-32 h-32 flex-shrink-0 sketchy-border overflow-hidden bg-gray-800">
+                         <img src="./src/lito.jpg" alt="Iñigo Gomez Escobar" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <div>
+                        <h4 class="font-hand text-3xl text-white mb-1 uppercase tracking-wide">Iñigo Gomez Escobar</h4>
+                        <p class="text-pezYellow font-medium mb-3 uppercase text-sm tracking-widest">CTO & Arquitecto Web</p>
+                        <p class="text-gray-400 text-sm leading-relaxed italic">Ingeniero de Software especializado en desarrollo de software y al frente de toda el área tecnológica. Enfocado en liderar la estrategia digital, asegurar arquitecturas robustas y optimizar los procesos de desarrollo para entregar soluciones escalables y de alto rendimiento.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center border-t border-gray-800 pt-16 relative">
+                <!-- Adorno da esquerda maior e rotacionado -->
+                <img src="./src/adorn.png" alt="Adorno esquerdo" class="hidden md:block w-36 h-auto object-contain rotate-[-90deg] absolute left-10 top-1/2 -translate-y-1/2">
+    
+                <h3 class="font-hand text-3xl md:text-4xl text-pezYellow uppercase mb-4 tracking-widest flex items-center justify-center gap-4">
+                    Detrás de cada historia hay un equipo 
+                </h3>
+                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Trabajamos junto a una red de animadores, artistas y especialistas que potencian cada producción según las necesidades únicas del proyecto.</p>
+                <button class="bg-pezYellow text-black font-bold uppercase tracking-wider py-3 px-8 rounded-full hover:bg-white transition-colors sketchy-border border-black">Conoce nuestro talento</button>
+                
+                <!-- Adorno da direita (mantido no padrão original) -->
+                <img src="./src/adorn.png" alt="Adorno direito" class="hidden md:block w-36 h-auto object-contain rotate-[90deg] transform scale-x-[-1] absolute right-10 top-1/2 -translate-y-1/2">
+            </div>
+    </section>
+
+    <!-- SECTION: Servicios y Proyectos WIPs -->
+    <section id="servicios" class="py-20 border-t border-gray-800 bg-[#0a0a0a]">
+        <div class="max-w-5xl mx-auto px-4 space-y-24">
+            
+            <!-- Proyectos -->
+            <div>
+                <h2 class="font-sans font-medium text-3xl md:text-5xl text-pezYellow mb-6">Nuestro proyectos y WIPs se encuentra en constante evolución</h2>
+                <p class="text-xl text-gray-300 font-light mb-12">Estamos seleccionando nuestros últimos reels de animación 2D, piezas en stop-motion y material detrás de cámaras para la versión pública del sitio.</p>
+                <div class="mt-8">
+                    <p class="text-pezYellow text-lg mb-1">¿Quieres revisar muestras de nuestro trabajo antes del lanzamiento oficial?</p>
+                    <p class="text-gray-400 text-lg">Escríbenos a nuestro correo <a href="mailto:contacto@pezcadilla.com" class="text-white hover:text-pezYellow font-medium transition-colors">contacto@pezcadilla.com</a></p>
+                </div>
+            </div>
+
+            <!-- Servicios -->
+            <div class="border-t border-gray-800 pt-24">
+                <h2 class="font-sans font-medium text-3xl md:text-5xl text-pezYellow mb-6">Catálogo de servicios en preparación</h2>
+                <p class="text-xl text-gray-300 font-light mb-12">Actualmente nos encontramos sistematizando las fichas técnicas y casos de estudio de nuestros servicios de animación 2D, stop-motion, desarrollo visual y más.</p>
+                <div class="mt-8">
+                    <p class="text-pezYellow text-lg mb-1">¿Tienes una idea en mente o necesitas un presupuesto para tu empresa?</p>
+                    <p class="text-gray-400 text-lg">Escríbenos a nuestro correo <a href="mailto:contacto@pezcadilla.com" class="text-white hover:text-pezYellow font-medium transition-colors">contacto@pezcadilla.com</a></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: IN MOTION LEARNING -->
+    <section id="inmotion" class="py-24 border-t border-gray-800 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <!-- Header In Motion -->
+            <div class="text-center mb-16">
+                <!-- Text based logo approximation -->
+                <h2 class="font-hand text-7xl md:text-9xl text-pezYellow mb-2 animate-float">in<br>mot<span class="text-pezRed">i</span>on</h2>
+                <p class="font-sans tracking-[0.3em] uppercase text-pezYellow text-xl md:text-2xl mb-8">Learning</p>
+                
+                <h3 class="font-hand text-3xl md:text-4xl text-pezYellow uppercase tracking-widest mb-6">Microaprendizaje Corporativo de Alta Retención</h3>
+                <p class="text-xl text-white font-light mb-4">In Motion es una solución SaaS propia desarrollada por Pezcadilla Animación.</p>
+                <p class="text-gray-400 max-w-4xl mx-auto">Combina cápsulas animadas de 60 a 90 segundos en stop-motion y técnicas mixtas con evaluaciones interactivas y analítica en tiempo real, transformando la capacitación empresarial en una experiencia ágil, memorable y de alto impacto.</p>
+            </div>
+
+            <!-- Video Box Placeholder -->
+            <div class="w-full max-w-4xl mx-auto aspect-video bg-[#1a1a1a] rounded flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors sketchy-border mb-4">
+                <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center">
+                    <div class="w-0 h-0 border-t-[15px] border-t-transparent border-l-[25px] border-l-gray-400 border-b-[15px] border-b-transparent ml-2"></div>
+                </div>
+            </div>
+            <p class="text-gray-500 max-w-4xl mx-auto mb-20 text-sm">In Motion - Teaser N°1 2026</p>
+
+            <!-- NOVO: Banner para abrir a Demo HTML -->
+            <div class="max-w-4xl mx-auto mb-24 text-center bg-[#0b0f19] border border-gray-800 rounded-2xl p-8 relative overflow-hidden group">
+                <!-- Imagem de fundo opcional do dashboard para dar o clima -->
+                <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                </div>
+                
+                <div class="relative z-10 flex flex-col items-center justify-center">
+                    <h4 class="font-sans text-2xl text-white mb-2">Explora la Plataforma</h4>
+                    <p class="text-gray-400 text-sm mb-6 max-w-lg mx-auto">Interactúa con la interfaz de In Motion en tiempo real y descubre cómo transformamos el aprendizaje corporativo.</p>
+                    
+                    <button onclick="openDemoModal()" class="inline-flex items-center gap-3 bg-pezYellow text-black font-bold uppercase tracking-wider py-3 px-8 rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,197,0,0.3)]">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        Abrir Demo Interactiva
+                    </button>
+                </div>
+            </div>
+
+            <!-- Text Columns -->
+            <div class="grid md:grid-cols-2 gap-16 mb-32 max-w-4xl mx-auto">
+                <div>
+                    <h4 class="font-sans font-medium text-2xl text-pezRed mb-4">Animación tradicional<br>aplicada al Aprendizaje</h4>
+                    <p class="text-gray-400 font-light leading-relaxed text-sm">Diseñamos contenidos animados enfocados en temáticas clave para las organizaciones: ciberseguridad, ética y compliance, prevención de riesgos y cultura corporativa. Cada cápsula está construida con la calidad artesanal y narrativa de nuestro estudio para maximizar la retención de los colaboradores.</p>
+                </div>
+                <div>
+                    <h4 class="font-sans font-medium text-2xl text-pezRed mb-4">Tecnología en la Nube<br>y Escalabilidad</h4>
+                    <p class="text-gray-400 font-light leading-relaxed text-sm">Respaldado por una arquitectura serverless en Amazon Web Services, la plataforma integra analítica de progreso y reportes ejecutivos para áreas de RRHH y TI. Actualmente nos encontramos desplegando la fase de maqueta y teaser conceptual, preparando el lanzamiento de nuestra plataforma oficial.</p>
+                </div>
+            </div>
+
+            <!-- Stats (+60% Retención...) -->
+            <div class="space-y-16 max-w-4xl mx-auto mb-32">
+                <div>
+                    <h4 class="font-sans text-3xl md:text-4xl text-pezYellow font-medium mb-3">+60% de Retención Real</h4>
+                    <p class="text-white font-light text-lg mb-2">Las cápsulas breves e interactivas elevan la retención de datos entre un 25% y 60% frente al 8% de los formatos tradicionales en texto</p>
+                    <p class="text-gray-600 text-sm">Research Institute of America</p>
+                </div>
+                <div>
+                    <h4 class="font-sans text-3xl md:text-4xl text-pezYellow font-medium mb-3">+80% de Finalización</h4>
+                    <p class="text-white font-light text-lg mb-2">Los contenidos de microaprendizaje de menos de 2 minutos alcanzan tasas de finalización superiores al 80%, evitando el abandono</p>
+                    <p class="text-gray-600 text-sm">TechSmith Research & Wyzowl</p>
+                </div>
+                <div>
+                    <h4 class="font-sans text-3xl md:text-4xl text-pezYellow font-medium mb-3">81% Valorización de arte humano</h4>
+                    <p class="text-white font-light text-lg mb-2">El 81% de las personas le otorga mayor valor y autenticidad al contenido con autoría humana frente a videos hechos 100% por IA.</p>
+                    <p class="text-gray-600 text-sm">TBaringa L&D Survey & ResearchGate</p>
+                </div>
+                <div>
+                    <h4 class="font-sans text-3xl md:text-4xl text-pezYellow font-medium mb-3">+72% Atención sostenida VS. IA</h4>
+                    <p class="text-white font-light text-lg mb-2">La textura táctil del stop-motion combate la "Saturación de IA", capturando la atención visual y elevando la memoria a largo plazo.</p>
+                    <p class="text-gray-600 text-sm">PubMed & Applied Educational Study</p>
+                </div>
+            </div>
+
+            <!-- Catálogos y Líneas de contenido -->
+            <div class="text-center mb-24">
+                <h3 class="font-sans text-4xl md:text-5xl text-pezRed font-medium mb-4">Catálogos y líneas de contenido</h3>
+                <p class="text-gray-300 font-light mb-12">Módulos temáticos diseñados para capacitar, concientizar y auditar los pilares clave de la organización.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Cards -->
+                    <div class="bg-[#ffcccc] text-black rounded-2xl overflow-hidden flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-pezCardPink py-4 font-medium text-lg">Ciberseguridad</div>
+                        <div class="p-6 flex-grow flex items-center justify-center text-sm">Phishing<br>Contraseñas<br>USBs<br>y Redes WIFI seguras</div>
+                    </div>
+                    <div class="bg-[#ffcccc] text-black rounded-2xl overflow-hidden flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-pezCardPink py-4 font-medium text-lg">Éticas y Compliance</div>
+                        <div class="p-6 flex-grow flex items-center justify-center text-sm">Código de conducta<br>Denuncias<br>Anticorrupción<br>y Prevencion de acoso</div>
+                    </div>
+                    <div class="bg-[#ffcccc] text-black rounded-2xl overflow-hidden flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-pezCardPink py-4 font-medium text-lg">Prevención de riesgos</div>
+                        <div class="p-6 flex-grow flex items-center justify-center text-sm">Ergonomía<br>Pausas activas<br>Protocolos OHS<br>Salud mental</div>
+                    </div>
+                    <div class="bg-[#ffcccc] text-black rounded-2xl overflow-hidden flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-pezCardPink py-4 font-medium text-lg">Cultura y OnBoarding</div>
+                        <div class="p-6 flex-grow flex items-center justify-center text-sm">Bienvenida<br>Valores<br>Trabajo en equipo e<br>inclusión</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ¿Cómo Funciona la Plataforma? -->
+            <div class="text-center mb-32">
+                <h3 class="font-sans text-4xl md:text-5xl text-pezYellow font-medium mb-4">¿Cómo Funciona la Plataforma?</h3>
+                <p class="text-gray-300 font-light mb-12 max-w-3xl mx-auto">Soluciones de aprendizaje agrupadas por áreas de impacto. Explora los temas disponibles en nuestra plataforma para fortalecer la seguridad, la ética, la cultura de tu empresa y más</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    <div class="bg-pezCardOlive text-white rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300 sketchy-border border-transparent hover:border-pezYellow">
+                        <h4 class="font-sans text-2xl text-pezYellow mb-4">Cápsula Animada</h4>
+                        <p class="text-sm font-light leading-relaxed">El colaborador accede desde su correo o navegador y visualiza una historia en stop-motion de 60 a 90 segundos.</p>
+                    </div>
+                    <div class="bg-pezCardOlive text-white rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300 sketchy-border border-transparent hover:border-pezYellow">
+                        <h4 class="font-sans text-2xl text-pezYellow mb-4">Quiz Interactivo</h4>
+                        <p class="text-sm font-light leading-relaxed">Responde una evaluación con preguntas clave para validar la comprensión inmediata.</p>
+                    </div>
+                    <div class="bg-pezCardOlive text-white rounded-3xl p-8 hover:-translate-y-2 transition-transform duration-300 sketchy-border border-transparent hover:border-pezYellow">
+                        <h4 class="font-sans text-2xl text-pezYellow mb-4">Dashboard Executive</h4>
+                        <p class="text-sm font-light leading-relaxed">El área de RRHH y TI monitorea el porcentaje de avance, notas globales y descarga reportes de cumplimiento</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modelos de suscripción (Table) -->
+            <div class="mb-24 overflow-x-auto">
+                <div class="text-center mb-12">
+                    <h3 class="font-sans text-4xl md:text-5xl text-pezYellow font-medium mb-4">Modelos de suscripción</h3>
+                    <p class="text-gray-300 font-light">Planes flexibles diseñados para adaptarse a la escala y madurez de cada organización.</p>
+                </div>
+
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="bg-[#f0df99] text-black">
+                            <th class="p-4 font-bold border-r border-gray-400">Característica</th>
+                            <th class="p-4 font-bold border-r border-gray-400">Plan Sandbox<br>(Gratis)</th>
+                            <th class="p-4 font-bold border-r border-gray-400">Plan PYME</th>
+                            <th class="p-4 font-bold border-r border-gray-400">Plan PRO<br>(Recomendado)</th>
+                            <th class="p-4 font-bold">Plan Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-[#fff9e6] text-black font-medium text-sm">
+                        <tr class="border-b border-gray-300">
+                            <td class="p-4 font-bold border-r border-gray-300">Público Objetivo</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Prospectos, RRHH y TI explorando</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Pequeñas empresas (10 a 50 empleados)</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Empresas medianas (100 a 500 empleados)</td>
+                            <td class="p-4 font-normal">Grandes corporativos (500+ empleados)</td>
+                        </tr>
+                        <tr class="border-b border-gray-300">
+                            <td class="p-4 font-bold border-r border-gray-300">Tarifa</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">$0 USD (Sin tarjeta)</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">$49 USD al mes (hasta 30 usuarios) o $2.00 por usuario al mes</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">$2.50 USD por usuario al mes</td>
+                            <td class="p-4 font-normal">$4.00+ USD por usuario al mes (Cotización a medida)</td>
+                        </tr>
+                        <tr class="border-b border-gray-300">
+                            <td class="p-4 font-bold border-r border-gray-300">Límite / Tiempo</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">1 cápsula activa / Hasta 10 usuarios / 14 días</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">6 cápsulas por año (1 cada 2 meses)</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">12 cápsulas por año (1 al mes)</td>
+                            <td class="p-4 font-normal">Acceso ilimitado + Cápsulas a la medida</td>
+                        </tr>
+                        <tr class="border-b border-gray-300">
+                            <td class="p-4 font-bold border-r border-gray-300">Catálogo</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">1 Cápsula Base de Ciberseguridad</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Ciberseguridad Base + Ética</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Biblioteca Completa Multitema</td>
+                            <td class="p-4 font-normal">Biblioteca Completa + Personalización de marca</td>
+                        </tr>
+                        <tr class="border-b border-gray-300">
+                            <td class="p-4 font-bold border-r border-gray-300">Acceso Web</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Correo corporativo directo</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Autenticación por correo corporativo</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Autenticación corporativa + SSO</td>
+                            <td class="p-4 font-normal">SSO (Microsoft/Google) + API RRHH</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold border-r border-gray-300">Dashboard</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Muestra de avance + Reporte PDF básico</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Porcentaje de Avance, Notas y Reporte PDF</td>
+                            <td class="p-4 border-r border-gray-300 font-normal">Analítica + Reporte por áreas</td>
+                            <td class="p-4 font-normal">Analítica Avanzada + Ejecutivo Dedicado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CTA bottom In Motion -->
+            <div class="text-center max-w-4xl mx-auto">
+                <p class="text-gray-300 text-sm mb-12">Todos los planes incluyen actualizaciones automáticas de plataforma, alojamiento seguro en la nube y evaluaciones interactivas al finalizar cada cápsula.</p>
+                
+                <h4 class="font-sans text-xl md:text-2xl text-pezYellow mb-2">¿Necesitas un volumen de usuarios mayor o contenidos 100% personalizados para tu empresa?</h4>
+                <p class="text-white mb-24">Contáctanos para armar un plan ajustado a tu organización.</p>
+
+                <h3 class="font-sans text-3xl md:text-4xl text-pezRed font-medium mb-4">¿Interesado en evaluar la plataforma o sumarte al proyecto?</h3>
+                <p class="text-xl md:text-2xl text-white font-light mb-12">Actualmente nos encontramos desplegando la fase de maqueta, ronda de inversión y validación del MVP.</p>
+                
+                <a href="#contacto" class="inline-block bg-pezYellow text-black font-semibold text-lg py-4 px-10 rounded-xl hover:bg-white hover:scale-105 transition-all duration-300">
+                    Pongamonos en contacto
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: Contacto -->
+    <section id="contacto" class="py-24 border-t border-gray-800 relative">
+        <div class="max-w-6xl mx-auto px-4 relative">
+            
+            <!-- Adorno Decoration Top Right Placeholder -->
+            <div class="absolute -top-12 -right-4 text-pezYellow font-hand text-5xl opacity-50 hidden md:block">
+                ✧･ﾟ: *✧･ﾟ:* 
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Text info -->
+                <div>
+                    <h2 class="font-sans font-medium text-4xl md:text-5xl text-white mb-6 uppercase">
+                        HABLEMOS DE<br>TU PRÓXIMO PROYECTO
+                    </h2>
+                    <p class="text-gray-300 text-lg font-light mb-16">Ya sea para evaluar la plataforma In Motion, explorar oportunidades de inversión o desarrollar piezas animadas a la medida, estamos a un mensaje de distancia.</p>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-pezYellow text-xl mb-4">Canales directos</h4>
+                            <div class="mb-4">
+                                <p class="text-pezYellow font-medium mb-1">Correo electrónico</p>
+                                <p class="text-white">contacto@pezcadilla.com</p>
+                            </div>
+                            <div>
+                                <p class="text-pezYellow font-medium mb-1">Redes Sociales</p>
+                                <p class="text-white mb-1"><span class="inline-block w-24">Instagram</span> @Pezcadilla</p>
+                                <p class="text-white"><span class="inline-block w-24">Youtube</span> @Pezcadilla</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="sketchy-box-contact p-8 md:p-12 relative">
+                    <h3 class="text-2xl text-white font-medium mb-8">Formulario de contacto</h3>
+                    
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-gray-400 text-sm mb-2">Nombre completo</label>
+                            <input type="text" class="w-full form-input p-3" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-sm mb-2">Correo electrónico</label>
+                            <input type="email" class="w-full form-input p-3" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-sm mb-2">Empresa u Organización</label>
+                            <input type="text" class="w-full form-input p-3">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-sm mb-2">Déjanos un mensaje</label>
+                            <textarea rows="4" class="w-full form-input p-3" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-pezYellow text-black font-medium py-3 rounded hover:bg-white transition-colors mt-4">
+                            Enviar
+                        </button>
+                        <p class="text-[10px] text-gray-500 text-center mt-4">El nombre de tu perfil no se compartirá. Nunca envíes contraseñas.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-900 bg-black py-8 text-center text-gray-600 text-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2026 Pezcadilla Animación. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal In Motion Demo -->
+    <div id="inMotionModal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-[#0b0f19] w-full max-w-[1400px] h-[95vh] rounded-2xl border border-gray-800 shadow-2xl flex flex-col relative transform scale-95 transition-transform duration-300 overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center px-6 py-4 bg-[#161e2e]/80 border-b border-gray-800 backdrop-blur-sm">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    <h3 class="ml-4 text-pezYellow font-sans font-medium text-sm tracking-widest uppercase">In Motion SaaS Demo</h3>
+                </div>
+                <button onclick="closeDemoModal()" class="text-gray-400 hover:text-white hover:bg-white/10 p-2 rounded-full transition-colors focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Iframe Body -->
+            <div class="flex-grow w-full h-full bg-[#0b0f19]">
+                <iframe src="demo.html" class="w-full h-full border-none" title="In Motion Demo Interface"></iframe>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Scripts de Interação -->
+    <script>
+        const modal = document.getElementById('inMotionModal');
+        const modalContent = modal.querySelector('div');
+
+        function openDemoModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeDemoModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto'; 
+            }, 300);
+        }
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeDemoModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+                closeDemoModal();
+            }
+        });
+    </script>
+
+</body>
+</html>

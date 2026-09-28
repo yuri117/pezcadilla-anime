@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Motion Learning - Plataforma Demo</title>
+    <style>
+        :root {
+            --bg-color: #f7f9fc;
+            --surface-color: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-soft: #fef3c7;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Fijo con Logo de In Motion */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Logo In Motion Learning */
+        .logo-img {
+            height: 48px;
+            width: auto;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .search-box {
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 10px 20px;
+            width: 320px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: var(--accent-yellow);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+        }
+
+        .user-nav {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-badge {
+            background: var(--accent-soft);
+            color: #b45309;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fde047;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #854d0e;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Layout Principal */
+        main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px 32px 60px 32px;
+            width: 100%;
+        }
+
+        /* Chips de Categorías */
+        .categories-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .chip {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .chip.active, .chip:hover {
+            background: var(--accent-yellow);
+            color: #fff;
+            border-color: var(--accent-yellow);
+        }
+
+        /* Sección de Video Principal Destacado */
+        .featured-section {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .video-player {
+            background: #000;
+            border-radius: var(--radius-md);
+            aspect-ratio: 16 / 9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .play-button {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--accent-yellow);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            transition: transform 0.2s;
+            padding-left: 4px;
+        }
+
+        .play-button:hover {
+            transform: scale(1.08);
+            background: var(--accent-red);
+        }
+
+        .featured-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tag-badge {
+            display: inline-block;
+            background: #fee2e2;
+            color: var(--accent-red);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            width: fit-content;
+        }
+
+        .featured-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .featured-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .quiz-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 8px;
+        }
+
+        .quiz-question {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .quiz-btn {
+            width: 100%;
+            text-align: left;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-btn:hover {
+            border-color: var(--accent-yellow);
+            background: var(--accent-soft);
+        }
+
+        /* Sección de Exploración con Scroll */
+        .section-header {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* Grilla de Videos (Scroll Infinito hacia abajo) */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .video-card {
+            background: var(--surface-color);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 160px;
+            background: #e2e8f0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .thumb-1 { background: linear-gradient(135deg, #fef3c7, #fde047); color: #854d0e; }
+        .thumb-2 { background: linear-gradient(135deg, #e0f2fe, #38bdf8); color: #075985; }
+        .thumb-3 { background: linear-gradient(135deg, #dcfce7, #4ade80); color: #166534; }
+        .thumb-4 { background: linear-gradient(135deg, #fce7f3, #f472b6); color: #831843; }
+        .thumb-5 { background: linear-gradient(135deg, #f3e8ff, #c084fc); color: #581c87; }
+        .thumb-6 { background: linear-gradient(135deg, #ffedd5, #fb923c); color: #7c2d12; }
+
+        .time-tag {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            .featured-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Fijo con Logo -->
+    <header>
+        <div class="logo-container">
+            <!-- Imagen cargada desde la raíz local o marcador si no existe la imagen local -->
+            <img class="logo-img" src="logo in motion learningv2.jpg" alt="In Motion Learning" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x50/000000/F59E0B?text=In+Motion+Learning';">
+        </div>
+        <input type="text" class="search-box" placeholder="🔍 Buscar cápsula de microaprendizaje...">
+        <div class="user-nav">
+            <span class="user-badge">Empresa / RRHH</span>
+            <div class="avatar" title="Mariana Belén">MB</div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+
+        <!-- Filtros Rápidos -->
+        <div class="categories-bar">
+            <button class="chip active">Todos los módulos</button>
+            <button class="chip">Onboarding 2026</button>
+            <button class="chip">Prevención de Riesgos</button>
+            <button class="chip">Cultura Corporativa</button>
+            <button class="chip">Ciberseguridad</button>
+            <button class="chip">Liderazgo & TI</button>
+        </div>
+
+        <!-- Video Destacado en Reproducción -->
+        <section class="featured-section">
+            <div class="video-player">
+                <button class="play-button" title="Reproducir">▶</button>
+                <span style="position: absolute; bottom: 12px; font-size: 0.8rem; opacity: 0.8;">Cápsula interactiva • 01:15 min</span>
+            </div>
+
+            <div class="featured-info">
+                <span class="tag-badge">REPRODUCTOR ACTIVO</span>
+                <h2 class="featured-title">Bienvenida e Inducción Corporativa 2026</h2>
+                <p class="featured-desc">Cápsula animada de microaprendizaje para la bienvenida de nuevos colaboradores.</p>
+
+                <!-- Pequeña interacción de prueba -->
+                <div class="quiz-card">
+                    <div class="quiz-question">❓ Pregunta interactiva:</div>
+                    <button class="quiz-btn">A. Completar registro en el portal</button>
+                    <button class="quiz-btn">B. Contactar al mentor asignado</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería para hacer Scroll Continuo para abajo -->
+        <div class="section-header">
+            <h3 class="section-title">Explorar más cápsulas en la biblioteca</h3>
+        </div>
+
+        <section class="video-grid">
+
+            <!-- Tarjeta 1 -->
+            <article class="video-card">
+                <div class="thumbnail thumb-1">
+                    <span>ANIMACIÓN 2D</span>
+                    <span class="time-tag">00:50 min</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Protocolos de Ciberseguridad</h4>
+                    <div class="card-meta">
+                        <span>Seguridad TI</span>
+                        <span>⭐ 98% Retención</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tarjeta 2 -->
+            <article class="video-card">
+                <div class="thumbnail thumb-2">
+                    <span>MICROLEARNING</span>
+                    <span class="time-tag">01:10 min</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Trabajo Colaborativo en Remoto</h4>
+                    <div class="card-meta">
+                        <span>Cultura</span>
+                        <span>⭐ 94% Retención</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tarjeta 3 -->
+            <article class="video-card">
+                <div class="thumbnail thumb-3">
+                    <span>STOP-MOTION</span>
+                    <span class="time-tag">01:30 min</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Pautas de Prevención en Oficinas</h4>
+                    <div class="card-meta">
+                        <span>Prevención</span>
+                        <span>⭐ 96% Retención</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tarjeta 4 -->
+            <article class="video-card">
+                <div class="thumbnail thumb-4">
+                    <span>NARRATIVA 3D</span>
+                    <span class="time-tag">01:05 min</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Gestión Eficiente del Tiempo</h4>
+                    <div class="card-meta">
+                        <span>Liderazgo</span>
+                        <span>⭐ 92% Retención</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tarjeta 5 -->
+            <article class="video-card">
+                <div class="thumbnail thumb-5">
+                    <span>MOTION GRAPHICS</span>
+                    <span class="time-tag">00:45 min</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Políticas de Privacidad y Datos</h4>
+                    <div class="card-meta">
+                        <span>Cumplimiento</span>
+                        <span>⭐ 90% Retención</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Tarjeta 6 -->
+            <article class="video-card">
+                <div class="thumbnail thumb-6">
+                    <span>CAPACITACIÓN</span>
+                    <span class="time-tag">01:20 min</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Feedback Efectivo en Equipos</h4>
+                    <div class="card-meta">
+                        <span>Recursos Humanos</span>
+                        <span>⭐ 95% Retención</span>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

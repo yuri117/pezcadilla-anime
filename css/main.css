@@ -1,0 +1,84 @@
+body {
+    background-color: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Fluid Animations */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float-fast {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+}
+@keyframes wiggle {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+}
+.animate-wiggle {
+    animation: wiggle 3s ease-in-out infinite;
+}
+/* Hand-drawn borders */
+.sketchy-border {
+    border: 2px solid #FFC500;
+    border-radius: 2% 95% 3% 95% / 95% 4% 92% 5%;
+    transition: all 0.3s ease;
+}
+.sketchy-border:hover {
+    border-radius: 95% 4% 92% 5% / 2% 95% 3% 95%;
+    transform: scale(1.02);
+}
+.sketchy-box-contact {
+    border: 2px solid #7a6600;
+    border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+    background: rgba(122, 102, 0, 0.1);
+}
+.form-input {
+    background: transparent;
+    border: 1px solid #7a6600;
+    border-radius: 8px;
+    color: white;
+    transition: border-color 0.3s;
+}
+.form-input:focus {
+    outline: none;
+    border-color: #FFC500;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+::-webkit-scrollbar-thumb {
+    background: #FFC500;
+    border-radius: 5px;
+}        
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #FFC500;
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
