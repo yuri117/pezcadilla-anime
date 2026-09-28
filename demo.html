@@ -46,6 +46,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 12vh;
         }
 
         .logo-container {
@@ -56,7 +57,7 @@
 
         /* Logo In Motion Learning */
         .logo-img {
-            height: 48px;
+            height: 12vh;
             width: auto;
             border-radius: 6px;
             object-fit: contain;
@@ -351,7 +352,7 @@
     <header>
         <div class="logo-container">
             <!-- Imagen cargada desde la raíz local o marcador si no existe la imagen local -->
-            <img class="logo-img" src="logo in motion learningv2.jpg" alt="In Motion Learning" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x50/000000/F59E0B?text=In+Motion+Learning';">
+            <img class="logo-img" src="./src/logoinmotion.png" alt="In Motion Learning" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x50/000000/F59E0B?text=In+Motion+Learning';">
         </div>
         <input type="text" class="search-box" placeholder="🔍 Buscar cápsula de microaprendizaje...">
         <div class="user-nav">
@@ -492,8 +493,53 @@
             </article>
 
         </section>
-
     </main>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Seleciona todos os cartões de vídeo e os elementos da seção em destaque
+            const videoCards = document.querySelectorAll('.video-card');
+            const featuredTitle = document.querySelector('.featured-title');
+            const featuredDesc = document.querySelector('.featured-desc');
+            const videoPlayer = document.querySelector('.video-player');
 
+            // Armazena a estrutura do botão de play para não perdê-lo ao atualizar o HTML interno
+            const playButtonHtml = '<button class="play-button" title="Reproducir">▶</button>';
+
+            videoCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // 1. Extrai as informações do cartão clicado
+                    const title = card.querySelector('.card-title').textContent;
+                    const time = card.querySelector('.time-tag').textContent;
+                    const metaCategory = card.querySelectorAll('.card-meta span')[0].textContent;
+                    const thumbnail = card.querySelector('.thumbnail');
+
+                    // 2. Identifica a classe de gradiente do thumbnail (ex: thumb-1, thumb-2)
+                    const thumbClass = Array.from(thumbnail.classList).find(c => c.startsWith('thumb-'));
+
+                    // 3. Atualiza o texto do título e da descrição em destaque
+                    featuredTitle.textContent = title;
+                    featuredDesc.textContent = `Cápsula da categoria de ${metaCategory} selecionada.`;
+
+                    // 4. Aplica o fundo correspondente ao vídeo principal
+                    videoPlayer.className = 'video-player'; // Reseta para a classe base
+                    if (thumbClass) {
+                        videoPlayer.classList.add(thumbClass);
+                    }
+
+                    // 5. Atualiza o tempo de duração exibido no canto do vídeo
+                    videoPlayer.innerHTML = `
+                        ${playButtonHtml}
+                        <span style="position: absolute; bottom: 12px; font-size: 0.8rem; opacity: 0.8; font-weight: 600;">Cápsula interactiva • ${time}</span>
+                    `;
+
+                    // 6. Rola a tela suavemente de volta para o player principal
+                    window.scrollTo({
+                        top: document.querySelector('.featured-section').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
